@@ -1,28 +1,20 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef INT_H
+#define INT_H
 
 /******************************************************************************************************************************/
-#include <sys/socket.h>
-#include <sys/un.h>
-
-#include <strtree.h>
+#include <string.h>
 #include <db.h>
-#include <int.h>
-
-
-#define SOCK_PATH				"msger_20250107"
-#define MSG_LEN					1024
 
 
 
-int main (int, char*[], char*[]);
-void accept_request (int);
+extern const unsigned char*		int_str_pull;
+extern const unsigned char*		int_str_push;
 
-
-
-
-
-
+void nope ();
+void request (unsigned char*);
+void do_push_msg (unsigned char*);
+void do_pull_msg (unsigned char*);
+int stoi (int*, unsigned char*);
 
 
 

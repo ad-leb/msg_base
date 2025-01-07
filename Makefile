@@ -6,6 +6,7 @@ COMDIR::= common
 DATDIR::= data
 
 TGT::= bin
+DBG::= dbg
 SRC::= $(shell ls ${COMDIR}/* ${DATDIR}/*)
 
 
@@ -14,15 +15,18 @@ SRC::= $(shell ls ${COMDIR}/* ${DATDIR}/*)
 
 
 all: ${TGT}
+debug: ${DBG}
 down:
-	@rm ${TGT}
-	
-e-main:
+	@for f in *; do [ ! -d $$f ] && [ $$f != Makefile ] && rm -f $$f; done
+
+emain:
 	@vim {${INCDIR},${COMDIR},${DATDIR}}/main.*
-e-db:
+estr:
+	@vim {${INCDIR},${COMDIR},${DATDIR}}/strtree.*
+edb:
 	@vim {${INCDIR},${COMDIR},${DATDIR}}/db.*
-e-str:
-	@vim {${INCDIR},${COMDIR},${DATDIR}}/str.*
+eint:
+	@vim {${INCDIR},${COMDIR},${DATDIR}}/int.*
 
 
 
@@ -31,3 +35,5 @@ e-str:
 
 ${TGT}: ${SRC}
 	@gcc -I ${INCDIR} $^ -o $@
+${DBG}: ${SRC}
+	@gcc -g -I ${INCDIR} $^ -o $@
