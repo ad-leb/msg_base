@@ -17,7 +17,7 @@ SRC::= $(shell ls ${COMDIR}/* ${DATDIR}/*)
 all: ${TGT}
 debug: ${DBG}
 down:
-	@for f in *; do [ ! -d $$f ] && [ $$f != Makefile ] && rm -f $$f; done
+	@for f in *; do [ ! -d $$f ] && [ $$f != Makefile ] && rm -f $$f; done; true
 
 emain:
 	@vim {${INCDIR},${COMDIR},${DATDIR}}/main.*

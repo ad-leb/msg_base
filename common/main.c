@@ -44,7 +44,7 @@ void accept_request (int ad)
 	len = read(ad, buffer, MSG_LEN);
 	while ( len > 0 ) {
 		buffer[len] = 0;
-		request(buffer);
+		request(ad, buffer);
 		len = read(ad, buffer, MSG_LEN);
 	}
 }
